@@ -1,7 +1,13 @@
-const ToDoList = () => {
+import React from "react";
+
+const ToDoList = (props) => {
     return (
         <div>
-            <p>Hello!</p>
+            <ul>
+                {props.items.map((item, index) => (
+                    <li key={index}>{item.name}</li>
+                ))}
+            </ul>
         </div>
     )
 }

@@ -4,25 +4,29 @@ import ToDoList from './ToDoList.jsx';
 import { useState } from 'react';
 
 const App = () => {
-  const [items, setItems] = useState("");
+  const [items, setItems] = useState([]);
 
-  const inputEntry = () => {
-
+  const inputEntry = (addItem) => {
+    //grab input from input field and save to items Array
+    setItems([...items, {"name" : addItem}]);
   }
 
   const deleteEntry = () => {
-
+    // when X is pressed, will delete entry from list
   }
 
-  const markEntryComplete = () => {
-
+  const markEntryComplete = (isComplete) => {
+    // Clicking the checkbox will strike through the text to mark the entry "complete"
+    setItems([...items, {"completed" : isComplete}]);
   }
   
+  console.log(items);
+
   return (
     <div className="App">
       <p>TODO</p>
-      <AddEntry />
-      <ToDoList />
+      <AddEntry inputEntry={inputEntry}/>
+      <ToDoList items={items} deleteEntry={deleteEntry} markEntryComplete={markEntryComplete} />
     </div>
   );
 }
