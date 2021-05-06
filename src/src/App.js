@@ -1,7 +1,7 @@
 import './App.css';
 import AddEntry from './AddEntry.jsx';
 import ToDoList from './ToDoList.jsx';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -22,47 +22,49 @@ const App = () => {
 
   const deleteCompleted = () => {
     // This will clear all completed Entries
-    let tempItems = items;
-    tempItems.filter(item => item.completed === false);
-    setItems(tempItems => [...tempItems]);
+    let tempItems = items.filter(item => item.completed === false);
+    setItems(tempItems);
     console.log("Delete All Entries")
   };
 
   const markEntryComplete = index => {
     // Clicking the checkbox will strike through the text to mark the entry "complete"
-    setItems(items => [...items, items[index].isComplete = !items[index].isComplete]);
-    console.log(items[index]);
-    console.log("Entry marked complete")
+    //setItems(items => [...items, items[index].isComplete = !items[index].isComplete]);
+    const tempItems = items.map((item, id) => {
+      return index === id ? { ...item, completed: !item.completed }: item
+    });
+
+    setItems(tempItems);
+    
+    console.log("item: ", items[index]);
+    console.log("index: ", index)
+    console.log("Entry marked complete");
   };
 
   const updateFilter = newFilter => {
-    if (newFilter === null) console.log("filter: Show All", filter);
+    if (newFilter === null || newFilter === undefined) console.log("filter: Show All", filter);
     if (newFilter === true) console.log("filter: Completed", filter);
     if (newFilter === false) console.log("filter: Still to Do", filter);
     setFilter(newFilter);
   }
 
-  const filteredItems = useEffect(() => {
-    const tempItems = items.length > 0 ? 
-    items.filter(item => {
-      if (filter === null) return item;
-      return item.isComplete === filter;                            
-    })
-    :
-    [];
-    return tempItems
-  }, [items, filter]) || items;
+  // const filteredItems = items.filter(item => {
+  //     if (filter === null) return item;
+  //     return item.isComplete === filter;                            
+  //   });
 
   return (
     <div className="App">
       <p>TODO</p>
       <AddEntry inputEntry={inputEntry}/>
       <ToDoList
-        items={filteredItems}
+        items={items}
+        totalItems={items.length}
         deleteEntry={deleteEntry}
         deleteCompleted={deleteCompleted}
         markEntryComplete={markEntryComplete}
         updateFilter={updateFilter}
+        filter={filter}
       />
     </div>
   );

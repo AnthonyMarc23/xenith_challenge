@@ -10,7 +10,10 @@ const ToDoList = (props) => {
             <div className="container">
                 <div className="listConainer">
                     <ul>
-                        {props.items.map((item, index) => (
+                        {props.items.filter(item => {
+                            if (props.filter === null) return item;
+                            return props.filter === item.completed;
+                        }).map((item, index) => (
                             <li key={index}>
                                 <input type="checkbox" checked={item.completed} onChange={() => props.markEntryComplete(index)}></input>
                                 <span>{item.name}</span>
@@ -26,8 +29,8 @@ const ToDoList = (props) => {
 
                 <div className="filters">
                     <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
-                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Active</div>
-                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Completed</div>
+                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Active</div>
+                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Completed</div>
                 </div>
             </div>
         }
