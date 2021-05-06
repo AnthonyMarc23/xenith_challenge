@@ -1,4 +1,5 @@
 import React from "react";
+import "./ToDoList.scss";
 
 const ToDoList = (props) => {
     return (
@@ -11,9 +12,9 @@ const ToDoList = (props) => {
                     <ul>
                         {props.items.map((item, index) => (
                             <li key={index}>
-                                <input type="checkbox" onSelect={props.markEntryComplete}></input>
+                                <input type="checkbox" checked={item.completed} onChange={() => props.markEntryComplete(index)}></input>
                                 <span>{item.name}</span>
-                                <div tabIndex="0" role="button" onClick={props.deleteEntry}>X</div>
+                                <div tabIndex="0" role="button" onClick={() => props.deleteEntry(index)}>X</div>
                             </li>
                         ))}
                     </ul>
@@ -24,9 +25,9 @@ const ToDoList = (props) => {
                 </div>
 
                 <div className="filters">
-                    <div tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
-                    <div tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Active</div>
-                    <div tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Completed</div>
+                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
+                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Active</div>
+                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Completed</div>
                 </div>
             </div>
         }

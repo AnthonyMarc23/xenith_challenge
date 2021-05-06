@@ -1,0 +1,14 @@
+$myColor: red;
+
+h1 {
+  color: $myColor;
+}
+
+.container {
+    .list-container {
+        border: 1px solid black;
+    }
+    div {
+        color: blue;
+    }
+}
