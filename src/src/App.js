@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import AddEntry from './AddEntry.jsx';
 import ToDoList from './ToDoList.jsx';
 import { useState } from 'react';
@@ -55,17 +55,20 @@ const App = () => {
 
   return (
     <div className="App">
-      <p>TODO</p>
-      <AddEntry inputEntry={inputEntry}/>
-      <ToDoList
-        items={items}
-        totalItems={items.length}
-        deleteEntry={deleteEntry}
-        deleteCompleted={deleteCompleted}
-        markEntryComplete={markEntryComplete}
-        updateFilter={updateFilter}
-        filter={filter}
-      />
+      <div className="header" />
+      <div className="container">
+        <p className="title">TODO</p>
+        <AddEntry inputEntry={inputEntry}/>
+        <ToDoList
+          items={items}
+          totalItems={items.length}
+          deleteEntry={deleteEntry}
+          deleteCompleted={deleteCompleted}
+          markEntryComplete={markEntryComplete}
+          updateFilter={updateFilter}
+          filter={filter}
+        />
+      </div>
     </div>
   );
 }

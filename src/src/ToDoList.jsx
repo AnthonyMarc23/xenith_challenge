@@ -3,37 +3,35 @@ import "./ToDoList.scss";
 
 const ToDoList = (props) => {
     return (
-        <div>{
-            props.items.length <= 0 ?
-            <p>You currently don't have anything in your To Do List.</p>
-            :
-            <div className="container">
-                <div className="listConainer">
-                    <ul>
-                        {props.items.filter(item => {
-                            if (props.filter === null) return item;
-                            return props.filter === item.completed;
-                        }).map((item, index) => (
-                            <li key={index}>
-                                <input type="checkbox" checked={item.completed} onChange={() => props.markEntryComplete(index)}></input>
-                                <span>{item.name}</span>
-                                <div tabIndex="0" role="button" onClick={() => props.deleteEntry(index)}>X</div>
-                            </li>
-                        ))}
-                    </ul>
-                    <div id="">
+        <div className="container">
+            <div className="list-container">
+                { props.items.length <= 0 ?
+                <p>You currently don't have anything in your To Do List.</p>
+                :
+                <ul className="list">
+                    {props.items.filter(item => {
+                        if (props.filter === null) return item;
+                        return props.filter === item.completed;
+                    }).map((item, index) => (
+                        <li className="list-item" key={index}>
+                            <input type="checkbox" checked={item.completed} onChange={() => props.markEntryComplete(index)}></input>
+                            <span className={item.completed ? "strike-through" : ''}>{item.name}</span>
+                            <div tabIndex="0" role="button" onClick={() => props.deleteEntry(index)}>X</div>
+                        </li>
+                    ))}
+                    <li className="list-item" id="">
                         <span>{props.items.length} items left</span>
-                        <div tabIndex="0" role="button" onClick={props.deleteCompleted}>Clear Completed</div>
-                    </div>
-                </div>
-
-                <div className="filters">
-                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
-                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Active</div>
-                    <div className="filterButton" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Completed</div>
-                </div>
+                        <div className="action-button" tabIndex="0" role="button" onClick={props.deleteCompleted}>Clear Completed</div>
+                    </li>
+                </ul>
+                }
             </div>
-        }
+
+            <div className={ props.items.length <= 0 ? "hidden" : "filters"}>
+                <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
+                <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Active</div>
+                <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Completed</div>
+            </div>
         </div>
     )
 }

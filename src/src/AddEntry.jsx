@@ -1,4 +1,5 @@
 import React from "react";
+import "./AddEntry.scss";
 
 const AddEntry = (props) => {
     
