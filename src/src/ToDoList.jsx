@@ -1,6 +1,5 @@
 import React from "react";
 import "./ToDoList.scss";
-import icon_close from "./images/icon__close.svg";
 
 const ToDoList = (props) => {
     return (
