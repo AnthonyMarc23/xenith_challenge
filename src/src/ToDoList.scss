@@ -1,12 +1,11 @@
 @import "./variables.scss";
-$myColor: red;
 
 .container {
     display: block;
     box-sizing: border-box;
     flex-grow: 1;
     max-width: 800px;
-    justify-self: center;
+    margin: 0 auto;
     
     .list-container {
         background: #25273C;
@@ -67,23 +66,16 @@ $myColor: red;
                     color: $border-grey;
                 }
 
-                > span {
+                .item-name {
                     font-size: 16px;
                     line-height: 19px;
-                    padding-left: 10px;
                     flex-grow: 1;
+                    padding-left: 10px;
                 }
 
-                > span:first-child {
-                    flex-grow: unset;
+                .item-count {
+                    padding: 6px;
                 }
-
-                > span:last-child {
-                    font-size: 12px;
-                    line-height: 15px;
-                    color: $border-grey;
-                }
-                
             }
 
             .list-item:last-child {
@@ -91,7 +83,28 @@ $myColor: red;
             }
         }
     }
+
+    .mobile-filters {
+        display: flex;
+        justify-content: center;
+        background: #25273C;
+        border-radius: 7px;
+
+        > div {
+            padding: 6px;
+            font-size: 12px;
+            line-height: 15px;
+        }
+    }
+
+    .desktop-filters {
+        display: none;
+    }
 }
+
+.icon:hover path {
+    fill-opacity: 1;
+  }
 
 .hidden {
     display: none;
@@ -99,10 +112,14 @@ $myColor: red;
 
 .clear {
     text-align: right;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: $border-grey;
 }
 
 .action-button {
-    font-weight: bold;
+    padding: 6px;
     color: $border-grey;
 }
 
@@ -124,13 +141,35 @@ $myColor: red;
     
                 .list-item {
     
-                    > span {
+                    > .item-name {
                         font-size: 20px;
                         line-height: 24px;  
                     }
                 }
             }
         }
+
+        .mobile-filters {
+            display: none;
+        }
+
+        .desktop-filters {
+            display: flex;
+            justify-content: center;
+
+            > div {
+                padding: 6px;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 19px;
+            }
+        }
+    }
+
+    .clear {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
     }
 }
 /* Customize the label (the container) */

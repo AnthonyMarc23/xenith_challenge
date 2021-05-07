@@ -25,6 +25,7 @@
         Border: 0;
         border-radius: 0 7px 7px 0;
         outline: none;
+        padding: 0 24px;
     }
 
     .todo-input:hover {
@@ -34,4 +35,15 @@
 
 .entry-container:hover {
     box-shadow: 0px 0px 4px 2px rgba(255, 255, 255, 0.25);
+}
+
+
+@media only screen and (min-width: 450px) {
+    .entry-container {
+
+        .todo-input {
+            line-height: 24px;
+            font-size: 20px;
+        }
+    }
 }
