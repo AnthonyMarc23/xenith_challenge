@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/xenith_challenge/static/css/main.f6f12221.chunk.css",
+    "main.js": "/xenith_challenge/static/js/main.cc88fe46.chunk.js",
+    "main.js.map": "/xenith_challenge/static/js/main.cc88fe46.chunk.js.map",
+    "runtime-main.js": "/xenith_challenge/static/js/runtime-main.92a0ff08.js",
+    "runtime-main.js.map": "/xenith_challenge/static/js/runtime-main.92a0ff08.js.map",
+    "static/js/2.2fbd1e3b.chunk.js": "/xenith_challenge/static/js/2.2fbd1e3b.chunk.js",
+    "static/js/2.2fbd1e3b.chunk.js.map": "/xenith_challenge/static/js/2.2fbd1e3b.chunk.js.map",
+    "static/js/3.76247989.chunk.js": "/xenith_challenge/static/js/3.76247989.chunk.js",
+    "static/js/3.76247989.chunk.js.map": "/xenith_challenge/static/js/3.76247989.chunk.js.map",
+    "index.html": "/xenith_challenge/index.html",
+    "static/css/main.f6f12221.chunk.css.map": "/xenith_challenge/static/css/main.f6f12221.chunk.css.map",
+    "static/js/2.2fbd1e3b.chunk.js.LICENSE.txt": "/xenith_challenge/static/js/2.2fbd1e3b.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/xenith_challenge/static/media/bg__trees.1d97db42.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92a0ff08.js",
+    "static/js/2.2fbd1e3b.chunk.js",
+    "static/css/main.f6f12221.chunk.css",
+    "static/js/main.cc88fe46.chunk.js"
+  ]
+}
