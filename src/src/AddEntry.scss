@@ -1,19 +1,39 @@
+@import "./variables.scss";
+
 .entry-container {
     display: flex;
     flex-direction: row;
-    background: #25273C;
+    background: $background-grey;
     border-radius: 7px;
     box-sizing: border-box;
     max-width: 800px;
     margin: 40px auto;
+    box-shadow: none;
+    transition: box-shadow .2s;
 
     .circle-box {
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        border-radius: 12px;
-        box-sizing: border-box;
+        display: flex;
         width: 24px;
         height: 24px;
+        border: solid 1px $border-grey;
         margin: 16px;
+        background-color: $background-grey;
+        border-radius: 50%;
+        background-image: linear-gradient($background-grey, $background-grey), 
+                          $blue-purple;
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .circle-box:hover {
+        display: flex;
+        border: solid 1px transparent;
+        background-color: none;
+        background-image: linear-gradient($background-grey, $background-grey), 
+                          $blue-purple;
+        background-origin: border-box;
+        background-clip: content-box, border-box;
     }
 
     .todo-input {
@@ -28,18 +48,23 @@
         padding: 0 24px;
     }
 
-    .todo-input:hover {
-
-    }
 }
 
 .entry-container:hover {
     box-shadow: 0px 0px 4px 2px rgba(255, 255, 255, 0.25);
 }
 
+.entry-container:focus-within {
+    box-shadow: 0px 0px 4px 2px rgba(255, 255, 255, 0.25);
+}
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 550px) {
     .entry-container {
+
+        .circle-box {
+            width: 28px;
+            height: 28px;
+        }
 
         .todo-input {
             line-height: 24px;

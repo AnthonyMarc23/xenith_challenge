@@ -2,6 +2,15 @@ import React from "react";
 import "./ToDoList.scss";
 
 const ToDoList = (props) => {
+
+    const filterView = (filterType) => (
+        <div className={ props.items.length <= 0 ? "hidden" : filterType}>
+            <div className={`action-button ${props.filter === null ? "highlight" : ""}`} tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
+            <div className={`action-button ${props.filter === false ? "highlight" : ""}`} tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Active</div>
+            <div className={`action-button ${props.filter === true ? "highlight" : ""}`} tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Completed</div>
+        </div>
+    )
+
     return (
         <div className="container">
             <div className="list-container">
@@ -16,7 +25,11 @@ const ToDoList = (props) => {
                         <li className="list-item" key={index}>
                             <span className="completed-checkbox" onClick={() => props.markEntryComplete(index)}>
                                 <input type="checkbox" readOnly checked={item.completed}></input>
-                                <span></span>
+                                <span>
+                                    <svg className="checkmark" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.75 12.1275L3.62249 9L2.5575 10.0575L6.75 14.25L15.75 5.25L14.6925 4.1925L6.75 12.1275Z" fill="white"/>
+                                    </svg>
+                                </span>
                             </span>
                             <span className={`item-name ${item.completed ? "strike-through" : ''}`}>{item.name}</span>
                             <div tabIndex="0" role="button" onClick={() => props.deleteEntry(index)}>
@@ -28,22 +41,13 @@ const ToDoList = (props) => {
                     ))}
                     <li className="list-item" id="">
                         <span className="item-count">{props.items.filter(item => !item.completed).length} items left</span>
-                        <div className={ props.items.length <= 0 ? "hidden" : "desktop-filters"}>
-                            <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
-                            <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Active</div>
-                            <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Completed</div>
-                        </div>
+                        {filterView("desktop-filters")}
                         <div className="action-button clear" tabIndex="0" role="button" onClick={props.deleteCompleted}>Clear Completed</div>
                     </li>
                 </ul>
                 }
             </div>
-
-            <div className={ props.items.length <= 0 ? "hidden" : "mobile-filters"}>
-                <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
-                <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(false)}>Active</div>
-                <div className="action-button" tabIndex="0" role="button" onClick={() => props.updateFilter(true)}>Completed</div>
-            </div>
+            {filterView("mobile-filters")}
         </div>
     )
 }
