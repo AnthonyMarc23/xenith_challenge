@@ -1,9 +1,6 @@
 # Xenith Challenge
 The goal is to create a working To Do list according to the specs.
 
-## To View
-clone the repository into a new folder, 
-
 
 ### Update 1
 Set up enviornment and dependencies
