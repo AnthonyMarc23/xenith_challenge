@@ -56,7 +56,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="header" />
-      <div className="container">
+      <div className="app-container">
         <p className="title">TODO</p>
         <AddEntry inputEntry={inputEntry}/>
         <ToDoList

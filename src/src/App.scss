@@ -16,16 +16,17 @@
     background-position: center center;
   }
 
-  .container {
+  .app-container {
     position: absolute;
-    top: 88px;
+    box-sizing: border-box;
+    top: 48px;
     left: 0;
     flex-direction: column;
     width: 100%;
+    padding: 20px;
 
     .title {
-      margin: 0;
-  
+      margin: 40px auto;
       font-family: Verdana;
       font-style: normal;
       font-weight: bold;
@@ -33,6 +34,7 @@
       line-height: 29px;
       letter-spacing: 0.25em;
       text-transform: uppercase;
+      max-width: 800px;
   
     }
 

@@ -14,14 +14,17 @@ const ToDoList = (props) => {
                         return props.filter === item.completed;
                     }).map((item, index) => (
                         <li className="list-item" key={index}>
-                            <input type="checkbox" checked={item.completed} onChange={() => props.markEntryComplete(index)}></input>
+                            <span className="completed-checkbox" onClick={() => props.markEntryComplete(index)}>
+                                <input type="checkbox" checked={item.completed}></input>
+                                <span></span>
+                            </span>
                             <span className={item.completed ? "strike-through" : ''}>{item.name}</span>
                             <div tabIndex="0" role="button" onClick={() => props.deleteEntry(index)}>X</div>
                         </li>
                     ))}
                     <li className="list-item" id="">
                         <span>{props.items.length} items left</span>
-                        <div className="action-button" tabIndex="0" role="button" onClick={props.deleteCompleted}>Clear Completed</div>
+                        <div className="action-button clear" tabIndex="0" role="button" onClick={props.deleteCompleted}>Clear Completed</div>
                     </li>
                 </ul>
                 }
