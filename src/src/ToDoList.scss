@@ -50,6 +50,10 @@
                         background-origin: border-box;
                         background-clip: content-box, border-box;
                         transition: all 0.2s ease-in-out;
+
+                        .checkmark {
+                            visibility: hidden;
+                        }
                     }
 
                     input[type="checkbox"]:checked + span {
@@ -61,6 +65,19 @@
                         background-origin: border-box;
                         background-clip: border-box;
 
+                        .checkmark {
+                            visibility: visible;
+                            //height: auto;
+                            fill: none;
+                            stroke: white;
+                            stroke-width: 1;
+                            
+                            path {
+                                stroke-dasharray: 200;
+                                stroke-dashoffset: -200;
+                                animation: draw 800ms forwards;	
+                            }
+                        }
                     }
 
                     input[type="checkbox"] + span:hover {
@@ -83,6 +100,19 @@
                         background-origin: border-box;
                         background-clip: border-box;
 
+                        .checkmark {
+                            //height: auto;
+                            visibility: visible;
+                            fill: none;
+                            stroke: white;
+                            stroke-width: 1;
+                            
+                            path {
+                                stroke-dasharray: 200;
+                                stroke-dashoffset: -200;
+                                animation: draw 800ms forwards;	
+                            }
+                        }
                     }
                     
                 }    
@@ -158,6 +188,18 @@
 
 .highlight {
     color: $highlight-blue;
+}
+
+@keyframes draw {
+	80% {
+		stroke-dashoffset: 0;
+		fill: none;
+	}
+	
+	100% {
+		stroke-dashoffset: 0;
+		fill: white;
+	}
 }
 
 @media only screen and (min-width: 550px) {
