@@ -17,41 +17,30 @@ const App = () => {
     let tempItems = items;
     tempItems.splice(index, 1);
     setItems(tempItems => [...tempItems]);
-    console.log("Delete Single Entry")
   };
 
   const deleteCompleted = () => {
     // This will clear all completed Entries
     let tempItems = items.filter(item => item.completed === false);
     setItems(tempItems);
-    console.log("Delete All Entries")
   };
 
   const markEntryComplete = index => {
     // Clicking the checkbox will strike through the text to mark the entry "complete"
-    //setItems(items => [...items, items[index].isComplete = !items[index].isComplete]);
     const tempItems = items.map((item, id) => {
       return index === id ? { ...item, completed: !item.completed }: item
     });
 
     setItems(tempItems);
-    
-    console.log("item: ", items[index]);
-    console.log("index: ", index)
-    console.log("Entry marked complete");
   };
 
+  // save filter to state
   const updateFilter = newFilter => {
-    if (newFilter === null || newFilter === undefined) console.log("filter: Show All", filter);
-    if (newFilter === true) console.log("filter: Completed", filter);
-    if (newFilter === false) console.log("filter: Still to Do", filter);
     setFilter(newFilter);
+    // if (newFilter === null || newFilter === undefined) console.log("filter: Show All", filter);
+    // if (newFilter === true) console.log("filter: Completed", filter);
+    // if (newFilter === false) console.log("filter: Still to Do", filter);
   }
-
-  // const filteredItems = items.filter(item => {
-  //     if (filter === null) return item;
-  //     return item.isComplete === filter;                            
-  //   });
 
   return (
     <div className="App">

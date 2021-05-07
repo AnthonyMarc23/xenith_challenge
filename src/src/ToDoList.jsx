@@ -3,6 +3,7 @@ import "./ToDoList.scss";
 
 const ToDoList = (props) => {
 
+    //filter view that highlights active filter and updates filter accordingly 
     const filterView = (filterType) => (
         <div className={ props.items.length <= 0 ? "hidden" : filterType}>
             <div className={`action-button ${props.filter === null ? "highlight" : ""}`} tabIndex="0" role="button" onClick={() => props.updateFilter(null)}>All</div>
@@ -19,6 +20,7 @@ const ToDoList = (props) => {
                 :
                 <ul className="list">
                     {props.items.filter(item => {
+                        //filter through items according to selected filter
                         if (props.filter === null) return item;
                         return props.filter === item.completed;
                     }).map((item, index) => (

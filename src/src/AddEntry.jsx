@@ -3,20 +3,24 @@ import "./AddEntry.scss";
 
 const AddEntry = (props) => {
 
+    //create Ref to textInput to momintor and change input field as needed 
     let textInput = React.createRef();
 
+    //save new to do to state
     const submitEntry = () => {
         props.inputEntry(textInput.current.value);
         textInput.current.value = null;
     }
 
-    const getEntry = (event) => {
+    //grab to do with enter key
+    const keyEntry = (event) => {
         if (event.key === 'Enter') {
             console.log('do validate');
             submitEntry();
         }
     }
 
+    //grab to do via mouse click on button
     const clickEntry = () => {
         console.log(textInput.current.value);
         if (textInput.current.value !== "" || textInput.current.value !== "") {
@@ -36,7 +40,7 @@ const AddEntry = (props) => {
                 type="text"
                 id="new-todo"
                 placeholder="Create a new Item..."
-                onKeyDown={e => getEntry(e)}
+                onKeyDown={e => keyEntry(e)}
             />
         </div>
     )
