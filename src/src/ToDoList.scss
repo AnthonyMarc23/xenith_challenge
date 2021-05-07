@@ -131,7 +131,9 @@
                 }
 
                 .item-count {
+                    font-size: 12px;
                     padding: 6px;
+                    opacity: .4;
                 }
             }
 
@@ -216,6 +218,10 @@
     
                 .list-item {
                     
+                    .item-count {
+                        font-size: 16px;
+                    }
+
                     .completed-checkbox {
                         input[type="checkbox"] + span {
                             width: 28px;
