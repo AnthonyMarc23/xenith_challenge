@@ -16,7 +16,7 @@ const ToDoList = (props) => {
         <div className="container">
             <div className="list-container">
                 { props.items.length <= 0 ?
-                <p>You currently don't have anything in your To Do List.</p>
+                <p>You have no items in your todo list. Create an item to begin tracking your list.</p>
                 :
                 <ul className="list">
                     {props.items.filter(item => {
